@@ -6,9 +6,30 @@
 
 ## Case study
 
-GreenFarm Foods Nigeria Ltd is opening a regional office in Enugu, separate from its Lagos headquarters. Design a small-office network using one Cisco router and one Cisco switch for three departments: Admin / IT, Finance / HR, and Customer Service / Reception.
-
-Each department must have its own VLAN and wireless access point. The branch router provides DHCP and inter-VLAN routing so devices in the three branch departments can communicate. The branch has no connection to the corporate HQ network.
+case study correction
+Case Study: SOHO Network Implementation for "GreenFarm Foods Nigeria Ltd"
+Background:
+GreenFarm Foods Nigeria Ltd is a fast-growing agribusiness based in Ikeja, Lagos, with over 2 million customers nationwide. The company handles the nationwide processing, buying, and selling of agricultural food items, with all central operations currently managed from its main corporate headquarters.
+To reduce heavy customer traffic at the Lagos headquarters and expand its supply chain operations into the eastern region, the company intends to set up a brand-new regional branch office in Ogun State.
+As a requirement from management, this new branch network must operate completely separate from the corporate HQ network. You have just been hired as a junior IT network support engineer to design and implement the network architecture for the new Ogun branch.
+Network Requirements & Specifications
+1. Hardware Constraints:
+   - The branch is a small office setup and must use only one router and one switch (all must be Cisco hardware).
+2. Departments:
+   - The branch office must be divided into three distinct departments:
+     - Admin / IT
+     - Finance / HR
+     - Customer Service / Reception
+3. VLAN Segregation:
+   - Each department must operate in a different VLAN for security and traffic isolation.
+4. Wireless Access (Wi-Fi):
+   - Each department must have a wireless access point deployed so staff and visitors can connect via Wi-Fi.
+5. Dynamic IP Assignment (DHCP):
+   - All host devices (PCs, printers, mobile devices, tablets) across all departments must obtain their IPv4 addresses automatically using the branch router configured as a DHCP server.
+6. Inter-VLAN Routing:
+   - Although separated into different VLANs, devices in all departments must be able to communicate smoothly with each other (requiring router sub-interfaces / Inter-VLAN routing configuration).
+7. Base Network IP:
+   - The ISP has allocated a base network address of 192.168.4.0 for this branch. You are required to perform proper subnetting to accommodate the 3 separate departmental subnets.
 
 ## Design assumptions
 
@@ -43,9 +64,9 @@ The topology labels show the three `/26` departmental networks. The switch confi
 
 ## Verification record
 
-The supplied screenshots confirm successful DHCP assignment for the Admin / IT and Finance / HR PCs. The router configuration shows pools for all three VLANs, including `CS/R`, and the switch configuration shows the VLAN access ports and a trunk-mode port. The ping screenshot shows reachability from PC0 to `192.168.4.131` after an initial timeout; it does not show a clean 0% loss result. A Customer Service endpoint DHCP lease and wireless association details are not included in the evidence.
+The supplied screenshots confirm successful DHCP assignment for the Admin / IT and Finance / HR PCs. The router configuration shows pools for all three VLANs, including `CS/R`, and the switch configuration shows the VLAN access ports and a trunk-mode port. The ping screenshot shows reachability from PC0 to `192.168.4.131`(PC2) after an initial timeout; it does not show a clean 0% loss result.
 
 ## Reflection
 
-This lab practices VLAN-based department separation, subnetting, router-on-a-stick, and centralized DHCP. The three VLANs remain distinct at Layer 2 while the router provides the Layer 3 path for inter-department communication. The Enugu branch is designed to operate without a link to the Lagos HQ.
+This lab practices VLAN-based department separation, subnetting, router-on-a-stick, and centralized DHCP. The three VLANs remain distinct at Layer 2 while the router provides the Layer 3 path for inter-department communication. The Ogun branch is designed to operate without a link to the Lagos HQ.
 
