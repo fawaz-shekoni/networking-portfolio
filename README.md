@@ -14,8 +14,8 @@ A guided series of 31 networking builds, from small LANs to secure multi-site an
 
 | # | Project title | Focus |
 |---:|---|---|
-| 01 | Network Foundations Lab | Build and test a basic routed network |
-| 02 | Connected Home Office | Design a small office and home network with reliable connectivity |
+| 01 | [Network Foundations Lab](projects/project-01-network-foundations.md) | Build and test a basic routed network |
+| 02 | [Connected Home Office](projects/project-02-connected-home-office.md) | Design a small office and home network with reliable connectivity |
 | 03 | Guest Services Network | Connect hotel departments, guest services, and shared resources |
 | 04 | Campus Core and Building Links | Plan a campus topology with multiple buildings |
 | 05 | Financial Network Blueprint | Model a bank network and its major security zones |
