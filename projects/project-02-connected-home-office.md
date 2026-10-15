@@ -27,9 +27,9 @@ Subnet mask for each department: `255.255.255.192` (`/26`). Each subnet has 62 u
 
 ## Topology and implementation
 
-The topology contains one Cisco ISR 4331 router, one Cisco 2960 switch, and three access points—one per department. Each department includes a PC, printer, and wireless client (smartphone, laptop, or tablet). The router uses 802.1Q subinterfaces on `GigabitEthernet0/0/0` for VLANs 10, 20, and 30. DHCP pools are configured for all three departmental subnets.
+The topology contains one Cisco ISR 4331 router, one Cisco 2960 switch, and three access points—one per department. Each department includes a PC, printer, and wireless client (smartphone, laptop, or tablet). The router uses 802.1Q subinterfaces on `GigabitEthernet0/0/0` for VLANs 10, 20, and 30. DHCP pools are configured for all three departmental subnets; the Customer Service / Reception pool is labeled `CS/R` in the router configuration.
 
-The diagram and router configuration screenshots are included below. The topology labels show the three `/26` departmental networks. The switch port VLAN assignments and trunk status are not visible in the supplied screenshots, so they are not claimed as independently verified here.
+The topology labels show the three `/26` departmental networks. The switch configuration screenshot shows access ports assigned to VLANs 10, 20, and 30, plus a trunk-mode port.
 
 ## Evidence
 
@@ -37,11 +37,13 @@ The diagram and router configuration screenshots are included below. The topolog
 - [Admin / IT PC DHCP lease](../images/project-02-admin-dhcp.png): `192.168.4.2/26`, gateway `192.168.4.1`; DHCP request successful.
 - [Finance / HR PC DHCP lease](../images/project-02-finance-dhcp.png): `192.168.4.66/26`, gateway `192.168.4.65`; DHCP request successful.
 - [Router subinterfaces](../images/project-02-router-subinterfaces.png): 802.1Q subinterfaces and gateway addresses for VLANs 10, 20, and 30.
-- [Router DHCP pools](../images/project-02-dhcp-pools.png): pools for all three department subnets.
+- [Router DHCP pools](../images/project-02-dhcp-pools.png): pools for all three department subnets; `CS/R` is Customer Service / Reception.
+- [Switch VLANs and trunk port](../images/project-02-switch-vlans-trunk.png): access ports for VLANs 10, 20, and 30 and a port configured as a trunk.
+- [Inter-VLAN ping](../images/project-02-inter-vlan-ping.png): PC0 pings `192.168.4.131`; the first request times out and the next three receive replies (3 of 4 received, 25% loss).
 
 ## Verification record
 
-The supplied screenshots confirm successful DHCP assignment for the Admin / IT and Finance / HR PCs and show router subinterfaces and DHCP pool definitions for all three VLANs. The supplied evidence does not show a Customer Service DHCP lease, wireless association details, switch VLAN/trunk configuration, or successful inter-VLAN pings. Those checks can be added as further evidence if captured from Packet Tracer.
+The supplied screenshots confirm successful DHCP assignment for the Admin / IT and Finance / HR PCs. The router configuration shows pools for all three VLANs, including `CS/R`, and the switch configuration shows the VLAN access ports and a trunk-mode port. The ping screenshot shows reachability from PC0 to `192.168.4.131` after an initial timeout; it does not show a clean 0% loss result. A Customer Service endpoint DHCP lease and wireless association details are not included in the evidence.
 
 ## Reflection
 
